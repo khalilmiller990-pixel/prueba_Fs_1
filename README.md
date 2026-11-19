@@ -1,27 +1,16 @@
 # Sistema de Ventas de Tienda
 
-Aplicación de escritorio en C# con Windows Forms y MySQL. Permite insertar, seleccionar (consultar) y eliminar clientes, productos y ventas. Cada venta guarda el cliente, el producto, la fecha, la cantidad y el precio unitario del momento de la compra. El inventario se descuenta al registrar la venta.
+Procedimientos: Insertar, Seleccionar y Eliminar. Ejercicio: Cree un Sistema de Ventas de Tienda con las tablas Clientes, Productos y Ventas. Registre qué productos compra cada cliente y la fecha de compra.
 
-## Requisitos
-
-- Windows y .NET 10 SDK
-- MySQL Server (por ejemplo, configurado con MySQL Workbench)
-- MySQL Workbench para ejecutar el script inicial
-
-## Preparar la base de datos
-
-1. Abra `database.sql` en MySQL Workbench.
-2. Conéctese a su servidor MySQL y ejecute el script completo. Este crea `tienda_ventas` y las tablas `Clientes`, `Productos` y `Ventas`.
-3. Abra `pruebaaa.slnx` en Visual Studio y ejecute el proyecto. NuGet restaurará `MySqlConnector` automáticamente.
-4. En la parte superior de la aplicación, introduzca servidor, puerto, base de datos, usuario y contraseña; pulse **Conectar / actualizar**.
-
-La configuración de conexión se introduce en la aplicación y no se guarda en el código fuente.
-
-## Uso
 
 - **Clientes:** registre nombre, teléfono y correo. Seleccione una fila y use **Eliminar seleccionado** para borrar el registro.
+  
 - **Productos:** registre nombre, precio y existencias iniciales. El precio y las existencias deben ser cero o mayores.
+  
 - **Ventas:** seleccione un cliente, un producto con existencias, fecha y cantidad; pulse **Registrar venta**. El total se calcula en la consulta y las existencias se actualizan automáticamente.
+  
 - Las ventas se muestran con el cliente, producto, fecha, cantidad, precio unitario y total. Seleccione una venta y pulse **Eliminar venta** para eliminarla.
 
-Las claves foráneas impiden eliminar clientes o productos que ya tengan ventas asociadas; primero elimine esas ventas.
+<img width="1102" height="742" alt="Captura de pantalla 2026-11-19 160216" src="https://github.com/user-attachments/assets/9c1291dc-8f13-48ee-9d7d-c2199a52ddbc" />
+<img width="1087" height="620" alt="Captura de pantalla 2026-11-19 160239" src="https://github.com/user-attachments/assets/f13a8edb-0390-4f08-9c74-6778cc0eb521" />
+<img width="1905" height="1078" alt="Captura de pantalla 2026-11-19 160253" src="https://github.com/user-attachments/assets/eb4ccd17-71dd-48e8-b81c-77c336aac439" />
