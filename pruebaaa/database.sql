@@ -1,0 +1,38 @@
+CREATE DATABASE IF NOT EXISTS tienda_ventas
+	CHARACTER SET utf8mb4
+	COLLATE utf8mb4_spanish_ci;
+
+USE tienda_ventas;
+
+CREATE TABLE IF NOT EXISTS Clientes (
+	IdCliente INT NOT NULL AUTO_INCREMENT,
+	Nombre VARCHAR(120) NOT NULL,
+	Telefono VARCHAR(30) NULL,
+	Correo VARCHAR(150) NULL,
+	PRIMARY KEY (IdCliente)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS Productos (
+	IdProducto INT NOT NULL AUTO_INCREMENT,
+	Nombre VARCHAR(150) NOT NULL,
+	Precio DECIMAL(10, 2) NOT NULL,
+	Existencias INT NOT NULL DEFAULT 0,
+	PRIMARY KEY (IdProducto),
+	CONSTRAINT CK_Productos_Precio CHECK (Precio >= 0),
+	CONSTRAINT CK_Productos_Existencias CHECK (Existencias >= 0)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS Ventas (
+	IdVenta INT NOT NULL AUTO_INCREMENT,
+	IdCliente INT NOT NULL,
+	IdProducto INT NOT NULL,
+	FechaCompra DATE NOT NULL,
+	Cantidad INT NOT NULL,
+	PrecioUnitario DECIMAL(10, 2) NOT NULL,
+	PRIMARY KEY (IdVenta),
+	CONSTRAINT CK_Ventas_Cantidad CHECK (Cantidad > 0),
+	CONSTRAINT FK_Ventas_Clientes FOREIGN KEY (IdCliente)
+		REFERENCES Clientes (IdCliente) ON DELETE RESTRICT,
+	CONSTRAINT FK_Ventas_Productos FOREIGN KEY (IdProducto)
+		REFERENCES Productos (IdProducto) ON DELETE RESTRICT
+) ENGINE=InnoDB;
